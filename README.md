@@ -26,17 +26,17 @@
 
 1. Frontend 빌드 (Nodejs 및 npm 설치 필요)
 
-        $ cd src/main/nuxt-front
+        $ cd src/main/front-nuxt
         $ npm install
         $ npm run generate
 
 2. Backend 빌드 (Maven 빌드)
 
-        $ mvn clean install
+        $ mvnw clean install
 
 3. Web Application 구동  
  
-        $ jar -jar demo-0.0.1-SNAPSHOT.jar
+        $ mvnw spring-boot:run
 
 4. 브라우저에서 실행 (크롬, 파이어폭스, 오페라 등 에서 구동 - IE 지원안함)
 : [http://localhost:8080](http://localhost:8080)    
