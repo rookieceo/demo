@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.NoSuchElementException;
+
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
@@ -32,31 +34,31 @@ public class PostController {
 
 	@GetMapping("/posts")
 	public Page<PostDTO.ListDTO> list(CustomPageRequest pageable) {
-		return postRepository.findAll(pageable.of()).map(entity -> mapper.map(entity, PostDTO.ListDTO.class));
+		return this.postRepository.findAll(pageable.of()).map(entity -> this.mapper.map(entity, PostDTO.ListDTO.class));
 	}
 
 	@GetMapping("/posts/{postId}")
 	public PostDTO.SelectDTO select(@PathVariable Long postId) {
-		PostEntity entity = postRepository.findById(postId).orElseThrow();
-		return mapper.map(entity, PostDTO.SelectDTO.class);
+		PostEntity entity = this.postRepository.findById(postId).orElseThrow(() -> new NoSuchElementException());
+		return this.mapper.map(entity, PostDTO.SelectDTO.class);
 	}
 
 	@PostMapping("/posts")
 	@Transactional
 	public PostEntity create(@RequestBody @Valid PostDTO.CreateDTO dto) {
-		return postRepository.save(mapper.map(dto, PostEntity.class));
+		return this.postRepository.save(this.mapper.map(dto, PostEntity.class));
 	}
 
 	@PutMapping("/posts/{postId}")
 	@Transactional
 	public PostEntity update(@RequestBody @Valid PostDTO.UpdateDTO dto) {
-		return postRepository.save(mapper.map(dto, PostEntity.class));
+		return this.postRepository.save(this.mapper.map(dto, PostEntity.class));
 	}
 
 	@DeleteMapping("/posts/{postId}")
 	@Transactional
 	public void delete(@PathVariable Long postId) {
-		postRepository.deleteById(postId);
+		this.postRepository.deleteById(postId);
 	}
 
 }

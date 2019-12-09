@@ -24,7 +24,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn x-large tile color="primary" nuxt to="/new">등록</v-btn>
+          <v-btn tile color="primary" nuxt to="/new">등록</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
