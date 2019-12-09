@@ -1,12 +1,11 @@
 package com.example.demo.controller;
 
-import java.util.NoSuchElementException;
-
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.example.demo.common.dto.CustomPageRequest;
 import com.example.demo.dto.PostDTO;
@@ -39,7 +39,8 @@ public class PostController {
 
 	@GetMapping("/posts/{postId}")
 	public PostDTO.SelectDTO select(@PathVariable Long postId) {
-		PostEntity entity = this.postRepository.findById(postId).orElseThrow(() -> new NoSuchElementException());
+		PostEntity entity = this.postRepository.findById(postId)
+			.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		return this.mapper.map(entity, PostDTO.SelectDTO.class);
 	}
 
