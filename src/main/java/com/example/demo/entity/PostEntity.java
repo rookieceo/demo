@@ -14,10 +14,12 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
+@NoArgsConstructor
 public class PostEntity {
 
 	@Id
@@ -38,4 +40,9 @@ public class PostEntity {
 	@Column(nullable = false, updatable = true)
 	private LocalDateTime modifiedAt;
 
+	public PostEntity(String title, String content, String createdBy) {
+		this.title = title;
+		this.content = content;
+		this.createdBy = createdBy;
+	}
 }
