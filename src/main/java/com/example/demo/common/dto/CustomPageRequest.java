@@ -35,6 +35,6 @@ public class CustomPageRequest {
 
 	// getter
 	public PageRequest of() {
-		return PageRequest.of(page - 1, size, direction, sortBy);
+		return PageRequest.of(this.page - 1, this.size, this.direction, this.sortBy);
 	}
 }
