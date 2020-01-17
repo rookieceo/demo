@@ -1,0 +1,17 @@
+debug: true
+spring:
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  jpa:
+    open-in-view: true
+    show-sql: true
+  output:
+    ansi:
+      enabled: always
+  profiles:
+    active: local
+  thymeleaf:
+    prefix: classpath:/public/
