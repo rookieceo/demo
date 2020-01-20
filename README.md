@@ -10,7 +10,7 @@
 
 본 샘플예제는 아래와 같은 특징을 가집니다.
 
-* springboot : 2.2.2.RELEASE 
+* springboot : 2.2.3.RELEASE 
 * spring-data-jpa
 * H2 Database : In-memory DB
 * springfox-swagger2 - API 테스팅
