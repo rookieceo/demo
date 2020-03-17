@@ -8,7 +8,7 @@
 
 본 샘플예제는 아래와 같은 특징을 가집니다.
 
-* springboot : 2.2.3.RELEASE 
+* springboot : 2.2.5.RELEASE 
 * spring-data-jpa
 * querydsl
 * H2 Database : In-memory DB
