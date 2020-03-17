@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.modelmapper.ModelMapper;
@@ -40,7 +42,7 @@ public class PostController {
 	@GetMapping("/posts/{postId}")
 	public PostDTO.SelectDTO select(@PathVariable Long postId) {
 		PostEntity entity = this.postRepository.findById(postId)
-			.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		return this.mapper.map(entity, PostDTO.SelectDTO.class);
 	}
 
@@ -60,6 +62,11 @@ public class PostController {
 	@Transactional
 	public void delete(@PathVariable Long postId) {
 		this.postRepository.deleteById(postId);
+	}
+
+	@GetMapping("/posts-querydsl")
+	public List<PostDTO.ListDTO> listUsingQuerydsl() {
+		return this.postRepository.postsUsingQuerydsl();
 	}
 
 }

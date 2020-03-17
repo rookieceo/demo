@@ -1,6 +1,4 @@
 # 샘플 게시판
-==================================================
-
 **Springboot, JPA, Nuxt** 등을 활용한 게시판 예제
 
 적용기술
@@ -12,6 +10,7 @@
 
 * springboot : 2.2.3.RELEASE 
 * spring-data-jpa
+* querydsl
 * H2 Database : In-memory DB
 * springfox-swagger2 - API 테스팅
 * nuxt - Vue 기반 프레임워크
@@ -35,11 +34,11 @@
         $ mvnw clean install
 
 3. Web Application 구동  
- 
+
         $ mvnw spring-boot:run
 
 4. 브라우저에서 실행 (크롬, 파이어폭스, 오페라 등 에서 구동 - IE 지원안함)
 : [http://localhost:8080](http://localhost:8080)    
 5. REST API 확인 및 테스트
 : [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)   
- 
+
